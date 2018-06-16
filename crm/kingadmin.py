@@ -5,10 +5,10 @@ from crm import models
 print("kingadmin setting enable...")
 class CustomerAdmin(BaseAdmin):
     list_display = ('id', 'name', 'qq','status', 'consultant', 'source', 'memo', 'date')
-    list_filter = ('source', 'consultant','status')
+    list_filter = ('source', 'consultant','status','date')
     search_fields = ('qq', 'name',)
     list_editable = ('source',)
-    list_per_page = 2
+    list_per_page = 8
     # readonly_fields = ('name',)
     # actions = ["change_status", ]
     def change_status(self,request,querysets):

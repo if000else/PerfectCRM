@@ -26,7 +26,7 @@ class Customer(models.Model):
     consult_course = models.ForeignKey('Course', verbose_name='咨询课程')
     content = models.TextField(verbose_name='咨询详情')
     consultant = models.ForeignKey('UserProfile')
-    date = models.DateTimeField(verbose_name='日期',auto_now_add=True)
+    date = models.DateTimeField(verbose_name='日期',auto_now_add=True,)
     memo = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField("Tag", blank=True)
     status_choices = ((0, '已报名'), (1, '未报名'), (2, '已退学'))

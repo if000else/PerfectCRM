@@ -1,5 +1,6 @@
 from django import template
 from django.utils.safestring import mark_safe
+from django.utils.timezone import datetime, timedelta
 
 register = template.Library()
 
@@ -50,15 +51,43 @@ def get_filter_field(filter_column, admin_obj):
     # print("admin obj",admin_obj.model ,filter_column)
     # 获取数据库中的字段对象，用来获取choices
     field_obj = admin_obj.model._meta.get_field(filter_column)
-    select_ele = """<select name="%s"> """ % filter_column
+    select_ele = """<select name="%s"> """  # 记得format 回来
     selected = admin_obj.filter_conditions.get(filter_column, 'no_field')
+    date_select = admin_obj.filter_conditions.get('%s__gte' % filter_column)
     # 有可能没有choices
-    for choice in field_obj.get_choices():
-        if selected == str(choice[0]):
-            select_option = '<option value=%s selected>%s</option>' % (choice[0], choice[1])
-        else:
-            select_option = '<option value=%s>%s</option>' % (choice[0], choice[1])
-        select_ele += select_option
+    try:
+        choices = field_obj.get_choices()
+    except AttributeError as e:
+        print('reflect field error [%s]' % field_obj, e)
+    else:
+        for choice in choices:
+            if selected == str(choice[0]):
+                select_option = '<option value=%s selected>%s</option>' % (choice[0], choice[1])
+            else:
+                select_option = '<option value=%s>%s</option>' % (choice[0], choice[1])
+            select_ele += select_option
+    if type(field_obj).__name__ in ('DateTimeField', 'DateField'):
+        date_ele = []
+        today_elt = datetime.now().date()
+        date_ele.append(['所有时间', ''])
+        date_ele.append(['今天', today_elt])
+        date_ele.append(['昨天', today_elt - timedelta(days=1)])
+        date_ele.append(['近七天', today_elt - timedelta(days=7)])
+        date_ele.append(['本月', today_elt.replace(day=1)])
+        date_ele.append(['近三十天', today_elt - timedelta(days=30)])
+        for item in date_ele:
+            # print(str(item[1]))
+            if date_select == str(item[1]):
+                selected = 'selected'
+            else:
+                selected = ''
+            select_option = '<option value=%s %s>%s</option>' % (item[1], selected, item[0])
+            select_ele += select_option
+        # format
+        select_ele %= '%s__gte' % filter_column
+    else:
+        select_ele = select_ele % filter_column
+
     select_ele += '</select>'
     return mark_safe(select_ele)
 
@@ -91,7 +120,7 @@ def display_order_by_icon(request, column):
     order_field = request.GET.get('o')
     if order_field:  # 查找到被排序的列
         if order_field.strip('-') == column:  # 当前列被排序
-            print('当前列被排序列：', column)
+            # print('当前列被排序列：', column)
             if order_field.startswith('-'):
                 icon = 'bottom'
             else:
@@ -160,23 +189,3 @@ def generate_paginator(request, page_info, admin_obj):
 
         return mark_safe(ele)
     return ''
-
-# def guess_page(current_page,loop_num):
-#
-#     offset = abs(current_page-loop_num)
-#
-#     if offset < 3:
-#
-#         if current_page == loop_num:
-#
-#             page_ele = '''<li class="active"><a href="?page=%s">%s</a> </li>'''%(loop_num,loop_num)
-#
-#         else:
-#
-#             page_ele = '''<li class=""><a href="?page=%s">%s</a> </li>'''%(loop_num,loop_num)
-#
-#         return format_html(page_ele)
-#
-#     else:
-#
-#         return ''
