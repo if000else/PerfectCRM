@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block body %}
+    <BODY>
+    <NAV class="navbar navbar-inverse navbar-fixed-top">
+        <DIV class="container-fluid">
+            <DIV class="navbar-header">
+                <BUTTON class="navbar-toggle collapsed"
+                        aria-expanded="false" aria-controls="navbar" type="button" data-toggle="collapse"
+                        data-target="#navbar"><SPAN class="sr-only">Toggle navigation</SPAN>
+                    <SPAN class="icon-bar"></SPAN><SPAN class="icon-bar"></SPAN><SPAN class="icon-bar"></SPAN></BUTTON>
+                <A class="navbar-brand" href="https://v3.bootcss.com/examples/dashboard/#">Perfect CRM</A></DIV>
+            <DIV class="navbar-collapse collapse" id="navbar">
+                <UL class="nav navbar-nav navbar-right">
+                    <LI><A href="https://v3.bootcss.com/examples/dashboard/#">{{ request.user.usrprofile.name }}</A>
+                    </LI>
+                </UL>
+            </DIV>
+        </DIV>
+    </NAV>
+    <DIV class="container-fluid">
+        <DIV class="row">
+            <DIV class="col-sm-3 col-md-2 sidebar">
+                <UL class="nav nav-sidebar">
+                    <LI class="active">
+                        {% block side_menu %}
+                            {% for role in request.user.userprofile.roles.all %}
+                                {% for menu in role.menu.all %}
+                                    <li>
+                                        <a href="
+                                                {% url menu.url_name %}">
+                                            {{ menu.name }}
+                                        </a>
+                                    </li>
+
+                                {% endfor %}
+
+                            {% endfor %}
+                        {% endblock %}
+                    </LI>
+                </UL>
+            </DIV>
+            <DIV class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                {% block page_content %}
+
+                    <H1 class="page-header">Dashboard</H1>
+                    <DIV class="row placeholders">
+                        <DIV class="col-xs-6 col-sm-3 placeholder"><IMG width="200" height="200" class="img-responsive"
+                                                                        alt="Generic placeholder thumbnail" src="">
+                            <H4>Label</H4><SPAN class="text-muted">Something else</SPAN></DIV>
+                        <DIV class="col-xs-6 col-sm-3 placeholder"><IMG width="200" height="200" class="img-responsive"
+                                                                        alt="Generic placeholder thumbnail"
+
+                            <H4>Label</H4><SPAN class="text-muted">Something else</SPAN></DIV>
+                        <DIV class="col-xs-6 col-sm-3 placeholder"><IMG width="200" height="200" class="img-responsive"
+                                                                        alt="Generic placeholder thumbnail"
+                        >
+
+                            <H4>Label</H4><SPAN class="text-muted">Something else</SPAN></DIV>
+                        <DIV class="col-xs-6 col-sm-3 placeholder"><IMG width="200" height="200" class="img-responsive"
+                                                                        alt="Generic placeholder thumbnail"
+                        >
+
+                            <H4>Label</H4><SPAN class="text-muted">Something else</SPAN>
+                        </DIV>
+                    </DIV>
+                {% endblock %}
+            </DIV>
+        </DIV>
+    </DIV><!-- Bootstrap core JavaScript
+    ================================================== -->
+    </BODY>
+{% endblock %}

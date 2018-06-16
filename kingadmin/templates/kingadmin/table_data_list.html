@@ -1,0 +1,77 @@
+{% extends 'kingadmin/index.html' %}
+{% load kingadmin_tags %}
+
+{% block right-container-content %}
+    <div class="row" style="margin-bottom: 20px">
+        <ol class="breadcrumb">
+            <li><a href="/kingadmin/">Home</a></li>
+            <li><a href="/kingadmin/{% get_app_name admin_obj.model %}/">{% get_app_name admin_obj.model %}</a></li>
+            <li class="active">{% get_model_verbose_name admin_obj.model %}</li>
+
+        </ol>
+        {#        <a href="{{ request.path }}add/"#}
+        {#           class="btn btn-sm btn-success pull-right">+Add {% get_model_verbose_name admin_obj.model %} </a>#}
+
+    </div>
+
+    <h4>{% get_model_verbose_name admin_obj.model %}</h4>
+    <div class="row">
+    <form>
+        {% for filter_column in admin_obj.list_filter %}
+            <div class="col-lg-3">
+                {{ filter_column }}
+                {% get_filter_field filter_column admin_obj %}
+
+            </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-success" value="过滤">
+        <hr>
+        <input type="text" name="q" value="{% if request|get_search_field %}{{ request|get_search_field }}{% endif %}"
+               placeholder="search by {% for i in admin_obj.search_fields %}<{{ i }}> {% endfor %}">
+        <input type="submit" class="btn btn-success" value="搜索">
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>
+                <input type="checkbox">
+            </td>
+            {% for column in admin_obj.list_display %}
+                <th>
+                    <a href="?o={% get_orderby_key request column %}&{% generate_filter_url request admin_obj %}">{{ column }}</a>
+                    {% display_order_by_icon request column %}
+                </th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td>总计{{ order_queryset.count }}条</td>
+        </tr>
+
+        </tfoot>
+        <tbody>
+
+        {% for obj in admin_obj.querysets %}
+
+            <tr class="alert-info">
+                <td><input type=checkbox></td>
+                {% build_table_row admin_obj obj %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+
+        <nav>
+
+            <ul class="pagination">
+            {% generate_paginator request page_info admin_obj%}
+            </ul>
+        </nav>
+
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="CRM Host">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="perfectcrm">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="crm"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="oldboydb"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="test"/>
+    <table id="9" parent="2" name="auth_group"/>
+    <table id="10" parent="2" name="auth_group_permissions"/>
+    <table id="11" parent="2" name="auth_permission"/>
+    <table id="12" parent="2" name="auth_user"/>
+    <table id="13" parent="2" name="auth_user_groups"/>
+    <table id="14" parent="2" name="auth_user_user_permissions"/>
+    <table id="15" parent="2" name="crm_branach"/>
+    <table id="16" parent="2" name="crm_classlist"/>
+    <table id="17" parent="2" name="crm_classlist_teachers"/>
+    <table id="18" parent="2" name="crm_course"/>
+    <table id="19" parent="2" name="crm_courserecord"/>
+    <table id="20" parent="2" name="crm_customer"/>
+    <table id="21" parent="2" name="crm_customer_tags"/>
+    <table id="22" parent="2" name="crm_customerfollowup"/>
+    <table id="23" parent="2" name="crm_enrollment"/>
+    <table id="24" parent="2" name="crm_menu"/>
+    <table id="25" parent="2" name="crm_payment"/>
+    <table id="26" parent="2" name="crm_role"/>
+    <table id="27" parent="2" name="crm_role_menu"/>
+    <table id="28" parent="2" name="crm_studyrecord"/>
+    <table id="29" parent="2" name="crm_tag"/>
+    <table id="30" parent="2" name="crm_userprofile"/>
+    <table id="31" parent="2" name="crm_userprofile_roles"/>
+    <table id="32" parent="2" name="django_admin_log"/>
+    <table id="33" parent="2" name="django_content_type"/>
+    <table id="34" parent="2" name="django_migrations"/>
+    <table id="35" parent="2" name="django_session"/>
+    <column id="36" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="37" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>varchar(80)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="38" parent="9" name="name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="9" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="40" parent="9" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="41" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="42" parent="10" name="group_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="10" name="permission_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="44" parent="10" name="auth_group_permissions_group_id_0cd325b0_uniq">
+      <ColNames>group_id
+permission_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="45" parent="10" name="auth_group_permissi_permission_id_84c5c92e_fk_auth_permission_id">
+      <ColNames>permission_id</ColNames>
+    </index>
+    <key id="46" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="47" parent="10" name="auth_group_permissions_group_id_0cd325b0_uniq">
+      <ColNames>group_id
+permission_id</ColNames>
+      <UnderlyingIndexName>auth_group_permissions_group_id_0cd325b0_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="48" parent="10" name="auth_group_permissions_group_id_b120cbf9_fk_auth_group_id">
+      <ColNames>group_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="49" parent="10" name="auth_group_permissi_permission_id_84c5c92e_fk_auth_permission_id">
+      <ColNames>permission_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="50" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="11" name="content_type_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="11" name="codename">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="54" parent="11" name="auth_permission_content_type_id_01ab375a_uniq">
+      <ColNames>content_type_id
+codename</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="55" parent="11" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="56" parent="11" name="auth_permission_content_type_id_01ab375a_uniq">
+      <ColNames>content_type_id
+codename</ColNames>
+      <UnderlyingIndexName>auth_permission_content_type_id_01ab375a_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="57" parent="11" name="auth_permissi_content_type_id_2f476e4b_fk_django_content_type_id">
+      <ColNames>content_type_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="58" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="12" name="password">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="12" name="last_login">
+      <Position>3</Position>
+      <DataType>datetime(6)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="61" parent="12" name="is_superuser">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="12" name="username">
+      <Position>5</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="12" name="first_name">
+      <Position>6</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="12" name="last_name">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="12" name="email">
+      <Position>8</Position>
+      <DataType>varchar(254)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="12" name="is_staff">
+      <Position>9</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="12" name="is_active">
+      <Position>10</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="12" name="date_joined">
+      <Position>11</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="69" parent="12" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="70" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="71" parent="12" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+    <column id="72" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="73" parent="13" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="13" name="group_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="75" parent="13" name="auth_user_groups_group_id_97559544_fk_auth_group_id">
+      <ColNames>group_id</ColNames>
+    </index>
+    <index id="76" parent="13" name="auth_user_groups_user_id_94350c0c_uniq">
+      <ColNames>user_id
+group_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="77" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="78" parent="13" name="auth_user_groups_user_id_94350c0c_uniq">
+      <ColNames>user_id
+group_id</ColNames>
+      <UnderlyingIndexName>auth_user_groups_user_id_94350c0c_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="79" parent="13" name="auth_user_groups_user_id_6a12ed8b_fk_auth_user_id">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="80" parent="13" name="auth_user_groups_group_id_97559544_fk_auth_group_id">
+      <ColNames>group_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="81" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="82" parent="14" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="14" name="permission_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="84" parent="14" name="auth_user_user_permissions_user_id_14a6b632_uniq">
+      <ColNames>user_id
+permission_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="85" parent="14" name="auth_user_user_perm_permission_id_1fbb5f2c_fk_auth_permission_id">
+      <ColNames>permission_id</ColNames>
+    </index>
+    <key id="86" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="87" parent="14" name="auth_user_user_permissions_user_id_14a6b632_uniq">
+      <ColNames>user_id
+permission_id</ColNames>
+      <UnderlyingIndexName>auth_user_user_permissions_user_id_14a6b632_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="88" parent="14" name="auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="89" parent="14" name="auth_user_user_perm_permission_id_1fbb5f2c_fk_auth_permission_id">
+      <ColNames>permission_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="90" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="91" parent="15" name="name">
+      <Position>2</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="15" name="addr">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="93" parent="15" name="name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="94" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="95" parent="15" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="96" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="97" parent="16" name="semester">
+      <Position>2</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="98" parent="16" name="class_type">
+      <Position>3</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="16" name="start_date">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="100" parent="16" name="end_date">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="101" parent="16" name="branch_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="102" parent="16" name="course_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="103" parent="16" name="crm_classlist_branch_id_82c1a6a6_uniq">
+      <ColNames>branch_id
+course_id
+semester</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="104" parent="16" name="crm_classlist_course_id_8a4c36de_fk_crm_course_id">
+      <ColNames>course_id</ColNames>
+    </index>
+    <key id="105" parent="16" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="106" parent="16" name="crm_classlist_branch_id_82c1a6a6_uniq">
+      <ColNames>branch_id
+course_id
+semester</ColNames>
+      <UnderlyingIndexName>crm_classlist_branch_id_82c1a6a6_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="107" parent="16" name="crm_classlist_branch_id_26374f76_fk_crm_branach_id">
+      <ColNames>branch_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_branach</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="108" parent="16" name="crm_classlist_course_id_8a4c36de_fk_crm_course_id">
+      <ColNames>course_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_course</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="109" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="110" parent="17" name="classlist_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="111" parent="17" name="userprofile_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="112" parent="17" name="crm_classlist_teachers_classlist_id_fdeb6cf0_uniq">
+      <ColNames>classlist_id
+userprofile_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="113" parent="17" name="crm_classlist_teac_userprofile_id_4ba87056_fk_crm_userprofile_id">
+      <ColNames>userprofile_id</ColNames>
+    </index>
+    <key id="114" parent="17" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="115" parent="17" name="crm_classlist_teachers_classlist_id_fdeb6cf0_uniq">
+      <ColNames>classlist_id
+userprofile_id</ColNames>
+      <UnderlyingIndexName>crm_classlist_teachers_classlist_id_fdeb6cf0_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="116" parent="17" name="crm_classlist_teachers_classlist_id_4b676750_fk_crm_classlist_id">
+      <ColNames>classlist_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_classlist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="117" parent="17" name="crm_classlist_teac_userprofile_id_4ba87056_fk_crm_userprofile_id">
+      <ColNames>userprofile_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="118" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="119" parent="18" name="name">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="120" parent="18" name="price">
+      <Position>3</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="121" parent="18" name="period">
+      <Position>4</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="122" parent="18" name="outline">
+      <Position>5</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="123" parent="18" name="name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="124" parent="18" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="125" parent="18" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="126" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="127" parent="19" name="day_num">
+      <Position>2</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="128" parent="19" name="has_homework">
+      <Position>3</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="129" parent="19" name="homework_title">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="130" parent="19" name="homework_content">
+      <Position>5</Position>
+      <DataType>varchar(128)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="131" parent="19" name="outline">
+      <Position>6</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="132" parent="19" name="date">
+      <Position>7</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="133" parent="19" name="from_class_id">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="134" parent="19" name="teacher_id">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="135" parent="19" name="crm_courserecord_from_class_id_4a38bdfe_uniq">
+      <ColNames>from_class_id
+day_num</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="136" parent="19" name="crm_courserecord_teacher_id_3ace9808_fk_crm_userprofile_id">
+      <ColNames>teacher_id</ColNames>
+    </index>
+    <key id="137" parent="19" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="138" parent="19" name="crm_courserecord_from_class_id_4a38bdfe_uniq">
+      <ColNames>from_class_id
+day_num</ColNames>
+      <UnderlyingIndexName>crm_courserecord_from_class_id_4a38bdfe_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="139" parent="19" name="crm_courserecord_from_class_id_4408a85a_fk_crm_classlist_id">
+      <ColNames>from_class_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_classlist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="140" parent="19" name="crm_courserecord_teacher_id_3ace9808_fk_crm_userprofile_id">
+      <ColNames>teacher_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="141" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="142" parent="20" name="name">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="143" parent="20" name="qq">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="144" parent="20" name="phone">
+      <Position>4</Position>
+      <DataType>varchar(64)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="145" parent="20" name="qq_name">
+      <Position>5</Position>
+      <DataType>varchar(64)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="146" parent="20" name="source">
+      <Position>6</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="147" parent="20" name="referal_from">
+      <Position>7</Position>
+      <DataType>varchar(64)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="148" parent="20" name="content">
+      <Position>8</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="149" parent="20" name="memo">
+      <Position>10</Position>
+      <DataType>longtext|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="150" parent="20" name="consult_course_id">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="151" parent="20" name="consultant_id">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="152" parent="20" name="date">
+      <Position>9</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="153" parent="20" name="crm_customer_consultant_id_11f5298a_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+    </index>
+    <index id="154" parent="20" name="crm_customer_consult_course_id_62aafa42_fk_crm_course_id">
+      <ColNames>consult_course_id</ColNames>
+    </index>
+    <index id="155" parent="20" name="qq">
+      <ColNames>qq</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="156" parent="20" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="157" parent="20" name="qq">
+      <ColNames>qq</ColNames>
+      <UnderlyingIndexName>qq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="158" parent="20" name="crm_customer_consult_course_id_62aafa42_fk_crm_course_id">
+      <ColNames>consult_course_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_course</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="159" parent="20" name="crm_customer_consultant_id_11f5298a_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="160" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="161" parent="21" name="customer_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="162" parent="21" name="tag_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="163" parent="21" name="crm_customer_tags_customer_id_2f3e4566_uniq">
+      <ColNames>customer_id
+tag_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="164" parent="21" name="crm_customer_tags_tag_id_3dbac3dd_fk_crm_tag_id">
+      <ColNames>tag_id</ColNames>
+    </index>
+    <key id="165" parent="21" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="166" parent="21" name="crm_customer_tags_customer_id_2f3e4566_uniq">
+      <ColNames>customer_id
+tag_id</ColNames>
+      <UnderlyingIndexName>crm_customer_tags_customer_id_2f3e4566_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="167" parent="21" name="crm_customer_tags_customer_id_cb3e3b39_fk_crm_customer_id">
+      <ColNames>customer_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_customer</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="168" parent="21" name="crm_customer_tags_tag_id_3dbac3dd_fk_crm_tag_id">
+      <ColNames>tag_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_tag</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="169" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="170" parent="22" name="content">
+      <Position>2</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="171" parent="22" name="date">
+      <Position>3</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="172" parent="22" name="intention">
+      <Position>4</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="173" parent="22" name="consultant_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="174" parent="22" name="customer_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="175" parent="22" name="crm_customerfollowup_customer_id_16ca1a28_fk_crm_customer_id">
+      <ColNames>customer_id</ColNames>
+    </index>
+    <index id="176" parent="22" name="crm_customerfollowu_consultant_id_f64b5970_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+    </index>
+    <key id="177" parent="22" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="178" parent="22" name="crm_customerfollowu_consultant_id_f64b5970_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="179" parent="22" name="crm_customerfollowup_customer_id_16ca1a28_fk_crm_customer_id">
+      <ColNames>customer_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_customer</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="180" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="181" parent="23" name="contract_agree">
+      <Position>2</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="182" parent="23" name="contract_approved">
+      <Position>3</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="183" parent="23" name="date">
+      <Position>4</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="184" parent="23" name="consultant_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="185" parent="23" name="customer_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="186" parent="23" name="enrolled_class_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="187" parent="23" name="crm_enrollment_consultant_id_17808eee_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+    </index>
+    <index id="188" parent="23" name="crm_enrollment_customer_id_4589de06_uniq">
+      <ColNames>customer_id
+enrolled_class_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="189" parent="23" name="crm_enrollment_enrolled_class_id_7ea2b50c_fk_crm_classlist_id">
+      <ColNames>enrolled_class_id</ColNames>
+    </index>
+    <key id="190" parent="23" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="191" parent="23" name="crm_enrollment_customer_id_4589de06_uniq">
+      <ColNames>customer_id
+enrolled_class_id</ColNames>
+      <UnderlyingIndexName>crm_enrollment_customer_id_4589de06_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="192" parent="23" name="crm_enrollment_consultant_id_17808eee_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="193" parent="23" name="crm_enrollment_customer_id_4e9336cf_fk_crm_customer_id">
+      <ColNames>customer_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_customer</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="194" parent="23" name="crm_enrollment_enrolled_class_id_7ea2b50c_fk_crm_classlist_id">
+      <ColNames>enrolled_class_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_classlist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="195" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="196" parent="24" name="name">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="197" parent="24" name="url_name">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="198" parent="24" name="url_type">
+      <Position>4</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="199" parent="24" name="crm_menu_name_74139ee6_uniq">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="200" parent="24" name="crm_menu_url_name_b38d7e45_uniq">
+      <ColNames>url_name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="201" parent="24" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="202" parent="24" name="crm_menu_name_74139ee6_uniq">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>crm_menu_name_74139ee6_uniq</UnderlyingIndexName>
+    </key>
+    <key id="203" parent="24" name="crm_menu_url_name_b38d7e45_uniq">
+      <ColNames>url_name</ColNames>
+      <UnderlyingIndexName>crm_menu_url_name_b38d7e45_uniq</UnderlyingIndexName>
+    </key>
+    <column id="204" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="205" parent="25" name="amount">
+      <Position>2</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="206" parent="25" name="date">
+      <Position>3</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="207" parent="25" name="consultant_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="208" parent="25" name="course_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="209" parent="25" name="customer_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="210" parent="25" name="crm_payment_consultant_id_dadfc95b_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+    </index>
+    <index id="211" parent="25" name="crm_payment_course_id_99bfc342_fk_crm_course_id">
+      <ColNames>course_id</ColNames>
+    </index>
+    <index id="212" parent="25" name="crm_payment_customer_id_edbd2a4a_fk_crm_customer_id">
+      <ColNames>customer_id</ColNames>
+    </index>
+    <key id="213" parent="25" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="214" parent="25" name="crm_payment_consultant_id_dadfc95b_fk_crm_userprofile_id">
+      <ColNames>consultant_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="215" parent="25" name="crm_payment_course_id_99bfc342_fk_crm_course_id">
+      <ColNames>course_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_course</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="216" parent="25" name="crm_payment_customer_id_edbd2a4a_fk_crm_customer_id">
+      <ColNames>customer_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_customer</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="217" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="218" parent="26" name="name">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="219" parent="26" name="name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="220" parent="26" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="221" parent="26" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="222" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="223" parent="27" name="role_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="224" parent="27" name="menu_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="225" parent="27" name="crm_role_menu_menu_id_6acaf97d_fk_crm_menu_id">
+      <ColNames>menu_id</ColNames>
+    </index>
+    <index id="226" parent="27" name="crm_role_menu_role_id_8a62c9d0_uniq">
+      <ColNames>role_id
+menu_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="227" parent="27" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="228" parent="27" name="crm_role_menu_role_id_8a62c9d0_uniq">
+      <ColNames>role_id
+menu_id</ColNames>
+      <UnderlyingIndexName>crm_role_menu_role_id_8a62c9d0_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="229" parent="27" name="crm_role_menu_role_id_4e967cda_fk_crm_role_id">
+      <ColNames>role_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_role</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="230" parent="27" name="crm_role_menu_menu_id_6acaf97d_fk_crm_menu_id">
+      <ColNames>menu_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_menu</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="231" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="232" parent="28" name="attendance">
+      <Position>2</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="233" parent="28" name="score">
+      <Position>3</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="234" parent="28" name="memo">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="235" parent="28" name="date">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="236" parent="28" name="course_record_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="237" parent="28" name="student_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="238" parent="28" name="crm_studyrecord_course_record_id_e3601e93_fk_crm_courserecord_id">
+      <ColNames>course_record_id</ColNames>
+    </index>
+    <index id="239" parent="28" name="crm_studyrecord_student_id_24d12464_uniq">
+      <ColNames>student_id
+course_record_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="240" parent="28" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="241" parent="28" name="crm_studyrecord_student_id_24d12464_uniq">
+      <ColNames>student_id
+course_record_id</ColNames>
+      <UnderlyingIndexName>crm_studyrecord_student_id_24d12464_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="242" parent="28" name="crm_studyrecord_course_record_id_e3601e93_fk_crm_courserecord_id">
+      <ColNames>course_record_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_courserecord</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="243" parent="28" name="crm_studyrecord_student_id_18b0c323_fk_crm_enrollment_id">
+      <ColNames>student_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_enrollment</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="244" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="245" parent="29" name="name">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="246" parent="29" name="name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="247" parent="29" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="248" parent="29" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="249" parent="30" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="250" parent="30" name="name">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="251" parent="30" name="user_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="252" parent="30" name="user_id">
+      <ColNames>user_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="253" parent="30" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="254" parent="30" name="user_id">
+      <ColNames>user_id</ColNames>
+      <UnderlyingIndexName>user_id</UnderlyingIndexName>
+    </key>
+    <foreign-key id="255" parent="30" name="crm_userprofile_user_id_baffd786_fk_auth_user_id">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="256" parent="31" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="257" parent="31" name="userprofile_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="258" parent="31" name="role_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="259" parent="31" name="crm_userprofile_roles_role_id_33eee41d_fk_crm_role_id">
+      <ColNames>role_id</ColNames>
+    </index>
+    <index id="260" parent="31" name="crm_userprofile_roles_userprofile_id_cee8b0c7_uniq">
+      <ColNames>userprofile_id
+role_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="261" parent="31" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="262" parent="31" name="crm_userprofile_roles_userprofile_id_cee8b0c7_uniq">
+      <ColNames>userprofile_id
+role_id</ColNames>
+      <UnderlyingIndexName>crm_userprofile_roles_userprofile_id_cee8b0c7_uniq</UnderlyingIndexName>
+    </key>
+    <foreign-key id="263" parent="31" name="crm_userprofile_ro_userprofile_id_39ea736f_fk_crm_userprofile_id">
+      <ColNames>userprofile_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="264" parent="31" name="crm_userprofile_roles_role_id_33eee41d_fk_crm_role_id">
+      <ColNames>role_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>crm_role</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="265" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="266" parent="32" name="action_time">
+      <Position>2</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="267" parent="32" name="object_id">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="268" parent="32" name="object_repr">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="269" parent="32" name="action_flag">
+      <Position>5</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="270" parent="32" name="change_message">
+      <Position>6</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="271" parent="32" name="content_type_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+    </column>
+    <column id="272" parent="32" name="user_id">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="273" parent="32" name="django_admin_log_user_id_c564eba6_fk_auth_user_id">
+      <ColNames>user_id</ColNames>
+    </index>
+    <index id="274" parent="32" name="django_admin__content_type_id_c4bce8eb_fk_django_content_type_id">
+      <ColNames>content_type_id</ColNames>
+    </index>
+    <key id="275" parent="32" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="276" parent="32" name="django_admin__content_type_id_c4bce8eb_fk_django_content_type_id">
+      <ColNames>content_type_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="277" parent="32" name="django_admin_log_user_id_c564eba6_fk_auth_user_id">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>perfectcrm</RefSchemaName>
+      <RefTableName>auth_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="278" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="279" parent="33" name="app_label">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="280" parent="33" name="model">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="281" parent="33" name="django_content_type_app_label_76bd3d3b_uniq">
+      <ColNames>app_label
+model</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="282" parent="33" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="283" parent="33" name="django_content_type_app_label_76bd3d3b_uniq">
+      <ColNames>app_label
+model</ColNames>
+      <UnderlyingIndexName>django_content_type_app_label_76bd3d3b_uniq</UnderlyingIndexName>
+    </key>
+    <column id="284" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="285" parent="34" name="app">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="286" parent="34" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="287" parent="34" name="applied">
+      <Position>4</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="288" parent="34" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="289" parent="35" name="session_key">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="290" parent="35" name="session_data">
+      <Position>2</Position>
+      <DataType>longtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="291" parent="35" name="expire_date">
+      <Position>3</Position>
+      <DataType>datetime(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="292" parent="35" name="django_session_de54fa62">
+      <ColNames>expire_date</ColNames>
+    </index>
+    <key id="293" parent="35" name="PRIMARY">
+      <ColNames>session_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
